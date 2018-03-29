@@ -13,5 +13,10 @@ The program you write in this project will run from the command line. It won't t
 - VirtualBox
 
 ## Notice
-There are 1 python file contains query and 1 text file for output.
-<pre><code>myqueries.py</code></pre> will run the query. 
+### Directory
+<Logs_Analysis> directory is for submit!!! Please check this directory when you do review.
+### Source code
+1. There are 1 python file contains query and 1 text file for output.
+   <pre><code>myqueries.py</code></pre> will run the query. 
+
+2. The size of "newsdqta.dql" was too big, so I didn't uploaded it. When needed, I'll upload it. 
