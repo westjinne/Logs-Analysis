@@ -25,9 +25,9 @@ def most_popular_three_articles():
             """
     result = get_data(query01)
     print("<The most popular three articles of all time>")
-    
-    for row in result:
-        print ("%s - %d Views" % (row[0], row[1]))
+
+    for title, views in result:
+        print ("%s - %d Views" % (title, views))
 
 
 def most_popular_article_authors():
@@ -44,9 +44,9 @@ def most_popular_article_authors():
             """
     result = get_data(query02)
     print("<The most popular article authors of all time>")
-    print
-    for i in range(0, len(result)):
-        print ("%s - %d Views" % (result[i][0], result[i][1]))
+
+    for author, views in result:
+        print ("%s - %d Views" % (author, views))
 
 
 def the_days_that_requests_lead_to_error():
