@@ -16,8 +16,8 @@ def get_data(query):
 def most_popular_three_articles():
     query01 = """
             SELECT articles.title, count(*) AS PV
-            FROM articles, log
-            WHERE '/article/' || articles.slug = log.path
+            FROM articles INNER JOIN log
+            ON '/article/' || articles.slug = log.path
             AND log.status = '200 OK'
             GROUP BY articles.title
             ORDER BY PV DESC
