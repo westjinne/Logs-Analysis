@@ -8,7 +8,7 @@ The program you write in this project will run from the command line. It won't t
 
 ## Prerequisites
 ### Programs
-- Python3
+- Python 2.7.12
 - Vagrant
 - VirtualBox
 
@@ -20,3 +20,5 @@ The program you write in this project will run from the command line. It won't t
    <pre><code>myqueries.py</code></pre> will run the query. 
 
 2. The size of "newsdqta.dql" was too big, so I didn't uploaded it. When needed, I'll upload it. 
+
+ 
