@@ -35,7 +35,7 @@ def most_popular_article_authors():
             SELECT name, PV FROM
             (SELECT authors.name, count(*) as PV
             FROM articles, authors, log
-            WHERE substr(log.path,10) = articles.slug 
+            WHERE '/article/' || articles.slug = log.path 
             AND log.status = '200 OK'
             GROUP BY authors.name) AS subq01
             WHERE PV>1000000
