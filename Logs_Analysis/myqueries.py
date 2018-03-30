@@ -33,7 +33,7 @@ def most_popular_three_articles():
 def most_popular_article_authors():
     query02 = """
             SELECT author, PV FROM
-            (SELECT articles.author, count(*) as PV
+            (SELECT articles.author, count(*) AS PV
             FROM articles, log
             WHERE '/article/' || articles.slug = log.path
             AND log.status = '200 OK'
