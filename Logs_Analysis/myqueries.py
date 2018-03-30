@@ -41,13 +41,8 @@ def most_popular_article_authors():
             ORDER BY PV
             DESC;
             """
-
-    result_ori = get_data(query02_origin)
     result = get_data(query02)
     print("<The most popular article authors of all time>")
-
-    for author_ori, views_ori in result_ori:
-        print ("%s - %d Views" % (author_ori, views_ori))
 
     for author, views in result:
         print ("%s - %d Views" % (author, views))
