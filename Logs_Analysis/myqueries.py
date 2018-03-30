@@ -25,9 +25,9 @@ def most_popular_three_articles():
             """
     result = get_data(query01)
     print("<The most popular three articles of all time>")
-    print
-    for i in range(0, len(result)):
-        print ("%s - %d Views" % (result[i][0], result[i][1]))
+    
+    for row in result:
+        print ("%s - %d Views" % (row[0], row[1]))
 
 
 def most_popular_article_authors():
@@ -35,7 +35,7 @@ def most_popular_article_authors():
             SELECT name, PV FROM
             (SELECT authors.name, count(*) as PV
             FROM articles, authors, log
-            WHERE '/article/' || articles.slug = log.path 
+            WHERE '/article/' || articles.slug = log.path
             AND log.status = '200 OK'
             GROUP BY authors.name) AS subq01
             WHERE PV>1000000
