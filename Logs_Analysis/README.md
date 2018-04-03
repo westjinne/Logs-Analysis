@@ -8,15 +8,15 @@ The program you write in this project will run from the command line. It won't t
 
 ## Prerequisites
 ### Programs
-- Python3
-- Vagrant
-- VirtualBox
-- VM configuration files
+- Python 2.7.12: https://www.python.org/downloads/release/python-2714/
+- Vagrant: https://www.virtualbox.org/wiki/Downloads
+- VirtualBox: https://www.virtualbox.org/wiki/Downloads
+- VM configuration files: https://github.com/udacity/fullstack-nanodegree-vm
 
 ## Notice
 ### How to run the project?
-1. Install Vagrant, VirtualBox programs above. 
-2. Download VM configuration files above.
+1. Install Vagrant, VirtualBox programs by links provided above. 
+2. Download VM configuration files by links provided above.
 3. By using terminal (or other cmd prompt), change the directory that VM configuration files are downloaded, and start vagrant.
 
 For example: (WHEN VM configuration files are stored at Downloads/FSND-Virtual-Machine/ directory.)
