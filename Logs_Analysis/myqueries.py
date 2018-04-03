@@ -49,47 +49,65 @@ def most_popular_article_authors():
 
 
 def the_days_that_requests_lead_to_error():
-    query03_01 = """
-            SELECT count(*) AS error, date(log.time)
+    query_prac01 = """
+        SELECT count(*) AS total
+        FROM log
+        GROUP BY date(log.time)
+    """
+    prac01 = get_data(query_prac01)
+
+#    for t in prac01:
+#        print("%d" % t)
+
+    query_prac02 = """
+        SELECT count(*) AS error, date(log.time) AS day
+        FROM log
+        WHERE log.status = '404 NOT FOUND'
+        GROUP BY day
+        ORDER BY day ASC
+    """
+    prac02 = get_data(query_prac02)
+
+#    for er, to in prac02:
+#        print("%d, %s" % (er, to))
+
+    query_last = """
+        SELECT date(log.time), round((cnt_error.error*100/cnt_total.total),3) AS perc
+        FROM log, (
+            SELECT date(log.time) AS day, count(*) as error
             FROM log
             WHERE log.status = '404 NOT FOUND'
             GROUP BY date(log.time)
-            ORDER BY date(log.time) ASC;
-            """
-    error = get_data(query03_01)
+        ) AS cnt_error, (
+            SELECT date(log.time) AS day, count(*) as total
+            FROM log
+            GROUP BY date(log.time)
+        ) AS cnt_total
+        WHERE cnt_error.error*100/cnt_total.total::float >= 1
+        AND date(log.time) = cnt_total.day
+        AND date(log.time) = cnt_error.day
+        GROUP BY date(log.time), cnt_error.error, cnt_total.total
+        ORDER BY date(log.time)
+    """
+    last = get_data(query_last)
 
-    query03_02 = """
-        SELECT count(*) AS total, date(log.time)
-        FROM log
-        GROUP BY date(log.time);
-        """
-    total = get_data(query03_02)
+    for d, r in last:
+          print("%s, %f" % (d, r))
 
-    query03_03 = """
-        SELECT date(log.time)
-        FROM log
-        GROUP BY date(log.time);
-        """
-    result03_03 = get_data(query03_03)
+#    for title, views in result:
+#        print ("%s - %d Views" % (title, views))
 
-    print ("<The days more than 1% of requests lead to errors>")
+#    for i in range(0, len(result)):
 
-    rate = list()
-    for i in range(len(error)):
-        calc_error = (float)((float)(error[i][0]*100)/(float)(total[i][0]))
-        rate.append(calc_error)
+#        print ("%s - %d Views" %(result[i][0], result[i][1]))
 
-    for i in range(len(rate)):
-        if rate[i] > 1.0:
-            sys.stdout.write("%s - %s" % (error[i][1], format(rate[i], '.2f')))
-            sys.stdout.write("% errors")
+
 
 if __name__ == '__main__':
-    print
-    most_popular_three_articles()
-    print
-    most_popular_article_authors()
-    print
+#    most_popular_three_articles()
+#    print
+#    most_popular_article_authors()
+#    print
     the_days_that_requests_lead_to_error()
     print
     print
