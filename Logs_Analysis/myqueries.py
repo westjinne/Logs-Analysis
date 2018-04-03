@@ -49,7 +49,7 @@ def most_popular_article_authors():
 
 
 def the_days_that_requests_lead_to_error():
-    query_last = """
+    query03 = """
         SELECT date(log.time), cnt_error.error, cnt_total.total
         FROM log, (
             SELECT date(log.time) AS day, count(*) as error
@@ -67,11 +67,11 @@ def the_days_that_requests_lead_to_error():
         GROUP BY date(log.time), cnt_error.error, cnt_total.total
         ORDER BY date(log.time)
     """
-    last = get_data(query_last)
+    result = get_data(query03)
 
-    for d, er, to in last:
-        a = (float)(er * 100) / (float)(to)
-        sys.stdout.write("%s - %.2f" % (d, a))
+    for date, error, total in result:
+        rate = (float)(error*100)/(float)(total)
+        sys.stdout.write("%s - %.2f" % (date, rate))
         sys.stdout.write("% errors")
 
 if __name__ == '__main__':
