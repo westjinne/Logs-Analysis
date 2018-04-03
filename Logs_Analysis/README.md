@@ -19,7 +19,7 @@ The program you write in this project will run from the command line. It won't t
 2. Download VM configuration files above.
 3. By using terminal (or other cmd prompt), change the directory that VM configuration files are downloaded, and start vagrant.
 
-example: VM configuration files are stored at Downloads/FSND-Virtual-Machine/ directory.)
+For example: (WHEN VM configuration files are stored at Downloads/FSND-Virtual-Machine/ directory.)
    <pre><code> 
    $ cd Downloads
    $ cd FSND-Virtual-Machine
@@ -30,7 +30,7 @@ example: VM configuration files are stored at Downloads/FSND-Virtual-Machine/ di
    $ psql -d news -f newsdata.sql</code></pre>
    
    After this process, you'll get news.sql file. 
-4. To run myqueries.py file, type <code> $ python myqueries.py</code> at the terminal. 
+4. To run myqueries.py file, type <pre><code> $ python myqueries.py</code></pre> at the terminal. 
 
 ### Directory
 <Logs_Analysis> directory is for submit!!! Please check this directory when you do review.
