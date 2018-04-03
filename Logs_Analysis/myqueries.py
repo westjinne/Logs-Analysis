@@ -49,28 +49,6 @@ def most_popular_article_authors():
 
 
 def the_days_that_requests_lead_to_error():
-    query_prac01 = """
-        SELECT count(*) AS total
-        FROM log
-        GROUP BY date(log.time)
-    """
-    prac01 = get_data(query_prac01)
-
-#    for t in prac01:
-#        print("%d" % t)
-
-    query_prac02 = """
-        SELECT count(*) AS error, date(log.time) AS day
-        FROM log
-        WHERE log.status = '404 NOT FOUND'
-        GROUP BY day
-        ORDER BY day ASC
-    """
-    prac02 = get_data(query_prac02)
-
-#    for er, to in prac02:
-#        print("%d, %s" % (er, to))
-
     query_last = """
         SELECT date(log.time), round((cnt_error.error*100/cnt_total.total),3) AS perc
         FROM log, (
@@ -94,20 +72,11 @@ def the_days_that_requests_lead_to_error():
     for d, r in last:
           print("%s, %f" % (d, r))
 
-#    for title, views in result:
-#        print ("%s - %d Views" % (title, views))
-
-#    for i in range(0, len(result)):
-
-#        print ("%s - %d Views" %(result[i][0], result[i][1]))
-
-
-
 if __name__ == '__main__':
-#    most_popular_three_articles()
-#    print
-#    most_popular_article_authors()
-#    print
+    most_popular_three_articles()
+    print
+    most_popular_article_authors()
+    print
     the_days_that_requests_lead_to_error()
     print
     print
