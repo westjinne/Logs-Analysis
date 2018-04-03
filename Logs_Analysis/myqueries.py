@@ -50,7 +50,7 @@ def most_popular_article_authors():
 
 def the_days_that_requests_lead_to_error():
     query_last = """
-        SELECT date(log.time), round((cnt_error.error*100/cnt_total.total),3) AS perc
+        SELECT date(log.time), round((cnt_error.error*100/cnt_total.total),3)
         FROM log, (
             SELECT date(log.time) AS day, count(*) as error
             FROM log
@@ -61,7 +61,7 @@ def the_days_that_requests_lead_to_error():
             FROM log
             GROUP BY date(log.time)
         ) AS cnt_total
-        WHERE cnt_error.error*100/cnt_total.total::float >= 1
+        WHERE cnt_error.error*100/cnt_total.total >= 1
         AND date(log.time) = cnt_total.day
         AND date(log.time) = cnt_error.day
         GROUP BY date(log.time), cnt_error.error, cnt_total.total
@@ -71,6 +71,9 @@ def the_days_that_requests_lead_to_error():
 
     for d, r in last:
           print("%s, %f" % (d, r))
+          print
+          sys.stdout.write("%s - %s" % (d, format(r, '.2f')))
+          sys.stdout.write("%errors")
 
 if __name__ == '__main__':
     most_popular_three_articles()
