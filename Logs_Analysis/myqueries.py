@@ -5,12 +5,18 @@ import sys
 
 
 def get_data(query):
-    db = psycopg2.connect("dbname=news")
-    c = db.cursor()
-    c.execute(query)
-    posts = c.fetchall()
-    db.close()
-    return posts
+    '''
+    Create connection between database and python file.
+    '''
+    try:
+        db = psycopg2.connect("dbname=news")
+        c = db.cursor()
+        c.execute(query)
+        posts = c.fetchall()
+        db.close()
+        return posts
+    except Exception as e:
+        print ("An Error has occured")
 
 
 def most_popular_three_articles():
