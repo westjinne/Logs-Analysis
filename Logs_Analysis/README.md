@@ -11,8 +11,27 @@ The program you write in this project will run from the command line. It won't t
 - Python3
 - Vagrant
 - VirtualBox
+- VM configuration files
 
 ## Notice
+### How to run the project?
+1. Install Vagrant, VirtualBox programs above. 
+2. Download VM configuration files above.
+3. By using terminal (or other cmd prompt), change the directory that VM configuration files are downloaded, and start vagrant.
+
+example: VM configuration files are stored at Downloads/FSND-Virtual-Machine/ directory.)
+   <pre><code> 
+   $ cd Downloads
+   $ cd FSND-Virtual-Machine
+   $ cd vagrant
+   $ vagrant up
+   $ vagrant ssh
+   $ cd /vagrant
+   $ psql -d news -f newsdata.sql</code></pre>
+   
+   After this process, you'll get news.sql file. 
+4. To run myqueries.py file, type <code> $ python myqueries.py</code> at the terminal. 
+
 ### Directory
 <Logs_Analysis> directory is for submit!!! Please check this directory when you do review.
 ### Source code
